@@ -1,0 +1,4 @@
+3
+GET colour
+SET colour red
+GET colour

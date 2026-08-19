@@ -1,0 +1,82 @@
+{
+  "course": "lua-fundamentals",
+  "language": "lua",
+  "language_id": 64,
+  "entrypoint": "main.lua",
+  "version": 1,
+  "content_hash": "1b8e55c17468fae1",
+  "lessons": [
+    {
+      "slug": "hello-lua",
+      "tests_hash": "4bb04ab52f0b"
+    },
+    {
+      "slug": "variables",
+      "tests_hash": "b3ff74709adf"
+    },
+    {
+      "slug": "numbers",
+      "tests_hash": "389d9de0c9e3"
+    },
+    {
+      "slug": "string-basics",
+      "tests_hash": "a41c0507672d"
+    },
+    {
+      "slug": "string-formatting",
+      "tests_hash": "915df6b4f459"
+    },
+    {
+      "slug": "string-patterns",
+      "tests_hash": "0bfff3773f7b"
+    },
+    {
+      "slug": "conditionals",
+      "tests_hash": "c7befdbc9746"
+    },
+    {
+      "slug": "loops",
+      "tests_hash": "0ba0a72da132"
+    },
+    {
+      "slug": "tables-as-arrays",
+      "tests_hash": "c14198f9d053"
+    },
+    {
+      "slug": "tables-as-dicts",
+      "tests_hash": "c87d8af5763d"
+    },
+    {
+      "slug": "iterators",
+      "tests_hash": "d1015b4635c9"
+    },
+    {
+      "slug": "metatables",
+      "tests_hash": "f4f960a530cd"
+    },
+    {
+      "slug": "objects",
+      "tests_hash": "f2151e5c764b"
+    },
+    {
+      "slug": "functions",
+      "tests_hash": "8ed97032043c"
+    },
+    {
+      "slug": "closures",
+      "tests_hash": "b35cd9c4d3e3"
+    },
+    {
+      "slug": "errors-and-pcall",
+      "tests_hash": "0740783ebe24"
+    },
+    {
+      "slug": "modules",
+      "tests_hash": "105d6a55aac1"
+    },
+    {
+      "slug": "word-index",
+      "tests_hash": "a1d21afc745f"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+5
+PUSH a x
+PUSH b y
+POP a
+POP b
+SIZE a
