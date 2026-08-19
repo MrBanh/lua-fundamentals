@@ -1,2 +1,4 @@
-local name = io.read()
-print("Hello, " .. name .. "!")
+local w = tonumber(io.read())
+local h = tonumber(io.read())
+
+print(w * h)
