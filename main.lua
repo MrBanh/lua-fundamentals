@@ -1,4 +1,13 @@
-local w = tonumber(io.read())
-local h = tonumber(io.read())
+local input = io.read()
 
-print(w * h)
+local words = {}
+for word in string.gmatch(input, "%S+") do
+	table.insert(words, word)
+end
+
+local res = {}
+for i = #words, 1, -1 do
+	table.insert(res, words[i])
+end
+
+print(table.concat(res, " "))
