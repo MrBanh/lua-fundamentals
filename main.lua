@@ -1,5 +1,8 @@
-local name = io.read()
-local qty = tonumber(io.read())
-local price = tonumber(io.read())
-
-print(string.format("%s: %d @ $%.2f = $%.2f", name, qty, price, qty * price))
+local n = tonumber(io.read())
+for _ = 1, n do
+	local line = io.read() or ""
+	local num = line:match("%d+") or "none"
+	local _, words = string.gsub(line, "%S+", " ")
+	local stripped = string.gsub(line, "%p", "")
+	print(num .. "|" .. words .. "|" .. stripped)
+end
