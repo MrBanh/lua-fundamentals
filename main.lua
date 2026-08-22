@@ -1,13 +1,5 @@
-local input = io.read()
+local name = io.read()
+local qty = tonumber(io.read())
+local price = tonumber(io.read())
 
-local words = {}
-for word in string.gmatch(input, "%S+") do
-	table.insert(words, word)
-end
-
-local res = {}
-for i = #words, 1, -1 do
-	table.insert(res, words[i])
-end
-
-print(table.concat(res, " "))
+print(string.format("%s: %d @ $%.2f = $%.2f", name, qty, price, qty * price))
