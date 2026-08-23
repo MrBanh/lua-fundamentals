@@ -1,19 +1,37 @@
-local defaults = { colour = "black", size = "1" }
-local config = setmetatable({}, { __index = defaults })
+local Stack = {}
+Stack.__index = Stack
 
-local count = tonumber(io.read())
-for _ = 1, count do
-	local command, key, val = io.read():match("^(%u+)%s+(%a+)%s*(.*)$")
+function Stack.new()
+	return setmetatable({}, Stack)
+end
 
-	if command == "GET" then
-		local stored_val = config[key]
-		if not stored_val then
-			print(key .. "=none")
-		else
-			local ownership = rawget(config, key) and "own" or "default"
-			print(key .. "=" .. stored_val .. " (" .. ownership .. ")")
-		end
-	elseif command == "SET" then
-		config[key] = val
+function Stack:push(v)
+	table.insert(self, v)
+end
+
+function Stack:pop()
+	return table.remove(self, #self)
+end
+
+function Stack:size()
+	return #self
+end
+
+local stacks = { a = Stack.new(), b = Stack.new() }
+
+local n = tonumber(io.read())
+
+for _ = 1, n do
+	local line = io.read() or ""
+	local cmd, name, value = line:match("^(%u+)%s+(%a+)%s*(.*)$")
+	local stack = stacks[name]
+	if cmd == "PUSH" then
+		stack:push(value)
+	elseif cmd == "POP" then
+		local popped = stack:pop()
+		print(popped or "empty")
+	elseif cmd == "SIZE" then
+		local size = stack:size()
+		print(size)
 	end
 end
