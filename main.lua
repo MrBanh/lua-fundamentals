@@ -1,12 +1,16 @@
-local n = tonumber(io.read())
-local nums = {}
-for i = 1, n do
-	table.insert(nums, tonumber(io.read()))
+local words = io.read()
+
+local distinct = {}
+for w in string.gmatch(words, "%S+") do
+	distinct[w] = (distinct[w] or 0) + 1
 end
 
-local sum = 0
-for _, v in ipairs(nums) do
-	sum = sum + v
+local sorted = {}
+for k, _ in pairs(distinct) do
+	table.insert(sorted, k)
 end
+table.sort(sorted)
 
-print(sum)
+for _, k in ipairs(sorted) do
+	print(k .. ": " .. distinct[k])
+end
