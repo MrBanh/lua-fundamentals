@@ -1,31 +1,41 @@
-local function divide(a, b)
-	if b == 0 then
-		error("division by zero", 0)
-	end
-	return a / b
+local textkit = {}
+
+function textkit.upper(s)
+	return string.upper(s)
 end
-
-local function parse(raw)
-	-- pull two numbers out of raw with tonumber
-	local parsed_a, parsed_b = string.match(raw, "(-?%d+)%s+(-?%d+)")
-	local a, b = tonumber(parsed_a), tonumber(parsed_b)
-
-	if not a or not b then
-		error("not two numbers: " .. raw, 0)
+function textkit.words(s) -- how many whitespace-separated words s has
+	local _, r = string.gsub(s, "%S+", "_")
+	return r
+end
+function textkit.rev(s) -- the words of s in reverse order, single-spaced
+	local words = {}
+	for w in string.gmatch(s, "(%S+)") do
+		table.insert(words, w)
 	end
 
-	return a, b
+	local reversed = {}
+	for i = #words, 1, -1 do
+		table.insert(reversed, words[i])
+	end
+
+	return table.concat(reversed, " ")
 end
 
 local n = tonumber(io.read())
+local keys = {}
 for _ = 1, n do
-	local raw = io.read() or ""
-
-	local ok, res = pcall(function()
-		local a, b = parse(raw)
-		local res = divide(a, b)
-		return res
-	end)
-
-	print(ok and string.format("ok: %.2f", res) or ("error: " .. res))
+	local line = io.read() or ""
+	local op, text = line:match("^(%S+)%s*(.*)$")
+	local fn = textkit[op]
+	if fn == nil then
+		print("no such function: " .. op)
+	else
+		table.insert(keys, op)
+		print(fn(text))
+	end
 end
+
+table.sort(keys)
+print("exports: " .. table.concat(keys, ", "))
+
+return textkit
