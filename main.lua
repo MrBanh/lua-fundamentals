@@ -22,7 +22,6 @@ function textkit.rev(s) -- the words of s in reverse order, single-spaced
 end
 
 local n = tonumber(io.read())
-local keys = {}
 for _ = 1, n do
 	local line = io.read() or ""
 	local op, text = line:match("^(%S+)%s*(.*)$")
@@ -30,11 +29,14 @@ for _ = 1, n do
 	if fn == nil then
 		print("no such function: " .. op)
 	else
-		table.insert(keys, op)
 		print(fn(text))
 	end
 end
 
+local keys = {}
+for k, _ in pairs(textkit) do
+	table.insert(keys, k)
+end
 table.sort(keys)
 print("exports: " .. table.concat(keys, ", "))
 
